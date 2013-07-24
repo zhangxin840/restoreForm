@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>restoreForm</title>
+        <style>
+            body {
+                margin: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        <h1> restoreForm </h1>
+        <h2> jQuery plugin to restore form from localStorage</h2>
+        <form  id="test-form">
+            <p id="restore-form-container" style="display: none">
+                Do you want to <a href="#" id="restore-form">restore your previously entered info</a>?
+            </p>
+            <fieldset>
+                <dl>
+                    <dt>
+                        <label for="first_name">First Name</label>
+                    </dt>
+                    <dd>
+                        <input type="text" name="first_name" id="first_name">
+                    </dd>
+                    <dt>
+                        <label for="last_name">Last Name</label>
+                    </dt>
+                    <dd>
+                        <input type="text" name="last_name" id="last_name">
+                    </dd>
+                    <dt>
+                        <label for="gender_female">Gender</label>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li>
+                                <label>
+                                    <input type="radio" name="gender" id="gender_female" value="Female">
+                                    Female </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="gender" id="gender_male" value="Male">
+                                    Male </label>
+                            </li>
+                        </ul>
+                    </dd>
+                    <dt>
+                        <label for="marital_status">Marital Status</label>
+                    </dt>
+                    <dd>
+                        <select name="marital_status" id="marital_status">
+                            <option selected="" value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Separated">Separated</option>
+                        </select>
+                    </dd>
+                    <dt>
+                        <label for="bio">Bio</label>
+                    </dt>
+                    <dd>
+                        <textarea name="bio" id="bio" rows="8" cols="40"></textarea>
+                    </dd>
+                    <dt>
+                        <label for="interests_video_games">Interests</label>
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li>
+                                <label>
+                                    <input type="checkbox" id="interests_video_games" name="video_games" value="Video games">
+                                    Video games </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" id="interests_beach_walks" name="beach_walks" value="Long walks on the beach">
+                                    Long walks on the beach </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" id="interests_dendrophilia" name="dendrophilia" value="Dendrophilia">
+                                    Dendrophilia </label>
+                            </li>
+                        </ul>
+                    </dd>
+                    <dt>
+                        <label for="relationship_type">Looking for</label>
+                    </dt>
+                    <dd>
+                        <select id="relationship_type" name="relationship_type" multiple="">
+                            <optgroup label="Man">
+                                <option value="m_w">seeking women</option>
+                                <option value="m_m">seeking men</option>
+                            </optgroup>
+                            <optgroup label="Woman">
+                                <option value="w_m">seeking men</option>
+                                <option value="w_w">seeking women</option>
+                            </optgroup>
+                        </select>
+                    </dd>
+                </dl>
+            </fieldset>
+            <fieldset class="actions">
+                <input type="submit" value="Save">
+                <input type="reset" value="Clear">
+            </fieldset>
+        </form>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="restoreForm.js"></script>
+        <script>
+            // Avoid `console` errors in browsers that lack a console.
+            ( function() {
+                    var method;
+                    var noop = function() {
+                    };
+                    var methods = ['assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error', 'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'];
+                    var length = methods.length;
+                    var console = (window.console = window.console || {});
+
+                    while (length--) {
+                        method = methods[length];
+
+                        // Only stub undefined methods.
+                        if (!console[method]) {
+                            console[method] = noop;
+                        }
+                    }
+                }());
+
+            // Test code
+            ;(function() {"use strict";
+                if(localStorage){
+                    localStorage["test_storage_data"] = '[{"name":"first_name","value":"first"},{"name":"last_name","value":"last name"},{"name":"gender","value":"Female"},{"name":"marital_status","value":"Married"},{"name":"bio","value":"Test Bio"},{"name":"beach_walks","value":"Long walks on the beach"},{"name":"dendrophilia","value":"Dendrophilia"},{"name":"relationship_type","value":"m_w"}]'
+                }
+                
+                $(document).ready(function() {
+                    var $targetForm = $("#test-form");
+                    $targetForm.restoreForm();
+                });
+
+            })();
+        </script>
+    </body>
+</html>
