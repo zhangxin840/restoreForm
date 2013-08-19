@@ -3,6 +3,10 @@ restoreForm
 
 A jQuery plugin to restore form fields using localStorage.
 
+### Live Demo:
+
+http://jsbin.com/okucAjA/2#
+
 ### Highlights:
 
 * jQuery plugin best practice from jqSeed. (jqSeed is an unpublished jQuery plugin template project, also made by Zhang Xin).
